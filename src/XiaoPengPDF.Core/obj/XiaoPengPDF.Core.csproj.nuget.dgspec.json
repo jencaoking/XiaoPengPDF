@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {}
+    "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {}
   },
   "projects": {
-    "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
+    "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj",
+        "projectUniqueName": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj",
         "projectName": "XiaoPengPDF.Core",
-        "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj",
+        "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj",
         "packagesPath": "C:\\Users\\66393\\.nuget\\packages\\",
-        "outputPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\obj\\",
+        "outputPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\66393\\AppData\\Roaming\\NuGet\\NuGet.Config"

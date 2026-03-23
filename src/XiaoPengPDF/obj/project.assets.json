@@ -1872,14 +1872,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
-              "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj"
+            "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
+              "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj"
             },
             "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\XiaoPengPDF.Infrastructure.csproj": {
               "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\XiaoPengPDF.Infrastructure.csproj"
             },
-            "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj": {
-              "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj"
+            "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj": {
+              "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj"
             }
           }
         }

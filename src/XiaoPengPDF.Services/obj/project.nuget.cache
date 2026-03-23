@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5ZzkyU1QaMU=",
+  "dgSpecHash": "RT5Po9G9whw=",
   "success": true,
-  "projectFilePath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj",
+  "projectFilePath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\66393\\.nuget\\packages\\pdfiumviewer.native.x86.v8-xfa\\2018.4.8.256\\pdfiumviewer.native.x86.v8-xfa.2018.4.8.256.nupkg.sha512",
     "C:\\Users\\66393\\.nuget\\packages\\pdfiumviewer.native.x86_64.v8-xfa\\2018.4.8.256\\pdfiumviewer.native.x86_64.v8-xfa.2018.4.8.256.nupkg.sha512",

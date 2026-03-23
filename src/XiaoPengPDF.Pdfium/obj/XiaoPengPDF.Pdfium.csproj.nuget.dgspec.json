@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj": {}
+    "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj": {}
   },
   "projects": {
-    "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
+    "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj",
+        "projectUniqueName": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj",
         "projectName": "XiaoPengPDF.Core",
-        "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj",
+        "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj",
         "packagesPath": "C:\\Users\\66393\\.nuget\\packages\\",
-        "outputPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\obj\\",
+        "outputPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\66393\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -63,14 +63,14 @@
         }
       }
     },
-    "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj": {
+    "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj",
+        "projectUniqueName": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj",
         "projectName": "XiaoPengPDF.Pdfium",
-        "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj",
+        "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj",
         "packagesPath": "C:\\Users\\66393\\.nuget\\packages\\",
-        "outputPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\obj\\",
+        "outputPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\66393\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -85,8 +85,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
-                "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj"
+              "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
+                "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj"
               }
             }
           }

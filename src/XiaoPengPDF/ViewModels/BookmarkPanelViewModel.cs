@@ -79,7 +79,7 @@ public partial class BookmarkPanelViewModel : ViewModelBase
 
             HasBookmarks = Bookmarks.Count > 0;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             HasBookmarks = false;
         }
