@@ -1,0 +1,105 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:XiaoPengPDF.ViewModels"
+        xmlns:views="using:XiaoPengPDF.Views"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+        x:Class="XiaoPengPDF.Views.MainWindow"
+        Title="小鹏PDF阅读器"
+        MinWidth="800"
+        MinHeight="600"
+        Width="1200"
+        Height="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Menu Grid.Row="0" Padding="4">
+            <MenuItem Header="文件(_F)">
+                <MenuItem Header="打开(_O)" Command="{Binding OpenCommand}" InputGesture="Ctrl+O"/>
+                <MenuItem Header="关闭(_C)" Command="{Binding CloseCommand}"/>
+                <Separator/>
+                <MenuItem Header="打印(_P)" Command="{Binding PrintCommand}"/>
+                <Separator/>
+                <MenuItem Header="最近文件" x:Name="RecentFilesMenuItem"/>
+                <Separator/>
+                <MenuItem Header="退出(_X)" Command="{Binding ExitCommand}"/>
+            </MenuItem>
+            <MenuItem Header="编辑(_E)">
+                <MenuItem Header="复制当前页文本" Command="{Binding CopyCurrentPageTextCommand}"/>
+            </MenuItem>
+            <MenuItem Header="视图(_V)">
+                <MenuItem Header="放大" Command="{Binding ZoomInCommand}"/>
+                <MenuItem Header="缩小" Command="{Binding ZoomOutCommand}"/>
+                <MenuItem Header="适应宽度" Command="{Binding FitWidthCommand}"/>
+                <MenuItem Header="适应页面" Command="{Binding FitPageCommand}"/>
+                <Separator/>
+                <MenuItem Header="切换主题" Command="{Binding ToggleThemeCommand}"/>
+                <Separator/>
+                <MenuItem Header="全屏" Command="{Binding FullScreenCommand}"/>
+            </MenuItem>
+            <MenuItem Header="搜索(_S)">
+                <MenuItem Header="查找(_F)" Command="{Binding ToggleSearchCommand}"/>
+            </MenuItem>
+            <MenuItem Header="帮助(_H)">
+                <MenuItem Header="关于" Command="{Binding AboutCommand}"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1" ColumnDefinitions="Auto,*">
+            <Border Grid.Column="0" Width="200" BorderBrush="#E2E8F0" BorderThickness="0,0,1,0" IsVisible="{Binding IsSidebarVisible}">
+                <Grid RowDefinitions="Auto,*">
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="8" Spacing="8">
+                        <Button Content="缩略图" Command="{Binding ShowThumbnailsCommand}" Padding="8,4"/>
+                        <Button Content="大纲" Command="{Binding ShowOutlineCommand}" Padding="8,4"/>
+                        <Button Content="书签" Command="{Binding ShowBookmarksCommand}" Padding="8,4"/>
+                    </StackPanel>
+                    <ContentControl Grid.Row="1" Content="{Binding CurrentSidebarContent}"/>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Column="1" RowDefinitions="Auto,*">
+                <Border Grid.Row="0" IsVisible="{Binding IsSearchPanelVisible}" BorderBrush="#E2E8F0" BorderThickness="0,0,0,1" Padding="8">
+                    <Grid ColumnDefinitions="*,Auto,Auto" Margin="0">
+                        <TextBox Grid.Column="0" Text="{Binding SearchText}" Watermark="输入搜索内容..." MinWidth="300"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="4" Margin="8,0,0,0">
+                            <Button Content="查找" Command="{Binding SearchCommand}" Padding="12,4"/>
+                            <Button Content="上一个" Command="{Binding SearchPreviousCommand}" Padding="8,4"/>
+                            <Button Content="下一个" Command="{Binding SearchNextCommand}" Padding="8,4"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="8" Margin="8,0,0,0">
+                            <TextBlock Text="{Binding SearchResultInfo}" VerticalAlignment="Center" Foreground="#666666"/>
+                            <Button Content="X" Command="{Binding CloseSearchCommand}" Padding="8,4"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <ContentControl Grid.Row="1" Content="{Binding PdfViewerContent}"/>
+            </Grid>
+        </Grid>
+
+        <Border Grid.Row="2" BorderBrush="#E2E8F0" BorderThickness="0,1,0,0" Padding="8,4">
+            <Grid ColumnDefinitions="Auto,*,Auto,*">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="4" VerticalAlignment="Center">
+                    <Button Content="&lt;" Command="{Binding PreviousPageCommand}" Padding="8,4" MinWidth="32"/>
+                    <TextBox Text="{Binding CurrentPageInput}" Watermark="页码" MinWidth="60" VerticalContentAlignment="Center"/>
+                    <TextBlock Text="/" VerticalAlignment="Center" Margin="4,0"/>
+                    <TextBlock Text="{Binding TotalPages}" VerticalAlignment="Center"/>
+                    <Button Content="&gt;" Command="{Binding NextPageCommand}" Padding="8,4" MinWidth="32"/>
+                </StackPanel>
+                <TextBlock Grid.Column="1" Text="{Binding StatusText}" VerticalAlignment="Center" Margin="16,0,0,0"/>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="16" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding ZoomInfo}" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Column="3" Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right">
+                    <Button Content="-" Command="{Binding ZoomOutCommand}" Padding="8,4" MinWidth="32"/>
+                    <TextBlock Text="{Binding ZoomPercent}" VerticalAlignment="Center" MinWidth="50" TextAlignment="Center"/>
+                    <Button Content="+" Command="{Binding ZoomInCommand}" Padding="8,4" MinWidth="32"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

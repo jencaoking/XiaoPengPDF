@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:XiaoPengPDF.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="400"
+             x:Class="XiaoPengPDF.Views.PdfOutlineView"
+             x:DataType="vm:PdfOutlineViewModel">
+
+    <Grid>
+        <TextBlock Text="无大纲"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Foreground="#999999"
+                   FontSize="14"
+                   IsVisible="{Binding !HasOutline}"/>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" IsVisible="{Binding HasOutline}">
+            <TreeView ItemsSource="{Binding OutlineItems}" Margin="8">
+                <TreeView.ItemTemplate>
+                    <TreeDataTemplate x:DataType="vm:OutlineItemViewModel" ItemsSource="{Binding Children}">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <TextBlock Text="{Binding Title}" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding PageNumber, StringFormat='({0})'}"
+                                       Foreground="#888888"
+                                       FontSize="11"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </TreeDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

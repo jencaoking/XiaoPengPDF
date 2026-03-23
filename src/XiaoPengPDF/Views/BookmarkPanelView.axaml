@@ -1,0 +1,49 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:XiaoPengPDF.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="400"
+             x:Class="XiaoPengPDF.Views.BookmarkPanelView"
+             x:DataType="vm:BookmarkPanelViewModel">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="8" Spacing="8">
+            <TextBlock Text="书签" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Button Content="+" Command="{Binding AddBookmarkCommand}" Padding="8,4" ToolTip.Tip="添加书签"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Text="暂无书签"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Foreground="#999999"
+                   FontSize="14"
+                   IsVisible="{Binding !HasBookmarks}"/>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" IsVisible="{Binding HasBookmarks}">
+            <ItemsControl ItemsSource="{Binding Bookmarks}" Margin="8">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="vm:BookmarkItemViewModel">
+                        <Border Margin="0,2" Padding="8" Background="#F8F8F8" CornerRadius="4">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <StackPanel Grid.Column="0" Spacing="2">
+                                    <TextBlock Text="{Binding Title}" FontWeight="Medium"/>
+                                    <TextBlock Text="{Binding PageInfo}" Foreground="#888888" FontSize="11"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="4">
+                                    <Button Content="前往" Command="{Binding NavigateCommand}" Padding="6,2" FontSize="11"/>
+                                    <Button Content="X" Command="{Binding RemoveCommand}" Padding="6,2" FontSize="11"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

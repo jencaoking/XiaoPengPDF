@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "GLnx/5l+I9k=",
+  "success": true,
+  "projectFilePath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\XiaoPengPDF.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\66393\\.nuget\\packages\\serilog\\4.0.0\\serilog.4.0.0.nupkg.sha512",
+    "C:\\Users\\66393\\.nuget\\packages\\serilog.sinks.file\\6.0.0\\serilog.sinks.file.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

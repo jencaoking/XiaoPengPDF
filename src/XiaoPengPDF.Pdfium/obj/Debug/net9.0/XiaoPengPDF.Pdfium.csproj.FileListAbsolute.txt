@@ -1,0 +1,17 @@
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\bin\Debug\net9.0\x64\pdfium.dll
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\bin\Debug\net9.0\x86\pdfium.dll
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\bin\Debug\net9.0\XiaoPengPDF.Pdfium.deps.json
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\bin\Debug\net9.0\XiaoPengPDF.Pdfium.dll
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\bin\Debug\net9.0\XiaoPengPDF.Pdfium.pdb
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\bin\Debug\net9.0\XiaoPengPDF.Core.dll
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\bin\Debug\net9.0\XiaoPengPDF.Core.pdb
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\obj\Debug\net9.0\XiaoPengPDF.Pdfium.csproj.AssemblyReference.cache
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\obj\Debug\net9.0\XiaoPengPDF.Pdfium.GeneratedMSBuildEditorConfig.editorconfig
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\obj\Debug\net9.0\XiaoPengPDF.Pdfium.AssemblyInfoInputs.cache
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\obj\Debug\net9.0\XiaoPengPDF.Pdfium.AssemblyInfo.cs
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\obj\Debug\net9.0\XiaoPengPDF.Pdfium.csproj.CoreCompileInputs.cache
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\obj\Debug\net9.0\XiaoPeng.4743DA1F.Up2Date
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\obj\Debug\net9.0\XiaoPengPDF.Pdfium.dll
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\obj\Debug\net9.0\refint\XiaoPengPDF.Pdfium.dll
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\obj\Debug\net9.0\XiaoPengPDF.Pdfium.pdb
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Pdfium\obj\Debug\net9.0\ref\XiaoPengPDF.Pdfium.dll

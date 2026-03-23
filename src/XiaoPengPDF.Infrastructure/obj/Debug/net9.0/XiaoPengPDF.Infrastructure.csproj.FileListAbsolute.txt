@@ -1,0 +1,15 @@
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\bin\Debug\net9.0\XiaoPengPDF.Infrastructure.deps.json
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\bin\Debug\net9.0\XiaoPengPDF.Infrastructure.dll
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\bin\Debug\net9.0\XiaoPengPDF.Infrastructure.pdb
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\bin\Debug\net9.0\XiaoPengPDF.Core.dll
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\bin\Debug\net9.0\XiaoPengPDF.Core.pdb
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\obj\Debug\net9.0\XiaoPengPDF.Infrastructure.csproj.AssemblyReference.cache
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\obj\Debug\net9.0\XiaoPengPDF.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\obj\Debug\net9.0\XiaoPengPDF.Infrastructure.AssemblyInfoInputs.cache
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\obj\Debug\net9.0\XiaoPengPDF.Infrastructure.AssemblyInfo.cs
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\obj\Debug\net9.0\XiaoPengPDF.Infrastructure.csproj.CoreCompileInputs.cache
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\obj\Debug\net9.0\XiaoPeng.38D2FA39.Up2Date
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\obj\Debug\net9.0\XiaoPengPDF.Infrastructure.dll
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\obj\Debug\net9.0\refint\XiaoPengPDF.Infrastructure.dll
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\obj\Debug\net9.0\XiaoPengPDF.Infrastructure.pdb
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Infrastructure\obj\Debug\net9.0\ref\XiaoPengPDF.Infrastructure.dll

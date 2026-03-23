@@ -1,0 +1,282 @@
+{
+  "format": 1,
+  "restore": {
+    "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj": {}
+  },
+  "projects": {
+    "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj",
+        "projectName": "XiaoPengPDF.Core",
+        "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj",
+        "packagesPath": "C:\\Users\\66393\\.nuget\\packages\\",
+        "outputPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\66393\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\XiaoPengPDF.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\XiaoPengPDF.Infrastructure.csproj",
+        "projectName": "XiaoPengPDF.Infrastructure",
+        "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\XiaoPengPDF.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\66393\\.nuget\\packages\\",
+        "outputPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\66393\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
+                "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Serilog": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj",
+        "projectName": "XiaoPengPDF.Pdfium",
+        "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj",
+        "packagesPath": "C:\\Users\\66393\\.nuget\\packages\\",
+        "outputPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\66393\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
+                "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "PdfiumViewer.Native.x86.v8-xfa": {
+              "target": "Package",
+              "version": "[2018.4.8.256, )"
+            },
+            "PdfiumViewer.Native.x86_64.v8-xfa": {
+              "target": "Package",
+              "version": "[2018.4.8.256, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj",
+        "projectName": "XiaoPengPDF.Services",
+        "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj",
+        "packagesPath": "C:\\Users\\66393\\.nuget\\packages\\",
+        "outputPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\66393\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
+                "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj"
+              },
+              "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\XiaoPengPDF.Infrastructure.csproj": {
+                "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\XiaoPengPDF.Infrastructure.csproj"
+              },
+              "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj": {
+                "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
