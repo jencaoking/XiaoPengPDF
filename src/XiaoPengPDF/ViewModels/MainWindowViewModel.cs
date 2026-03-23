@@ -89,7 +89,7 @@ public partial class MainWindowViewModel : ViewModelBase
         _bookmarkService = new BookmarkService();
 
         PdfViewerViewModel = new PdfViewerViewModel(_documentService);
-        ThumbnailListViewModel = new PdfThumbnailListViewModel(_documentService);
+        ThumbnailListViewModel = new PdfThumbnailListViewModel(_documentService, GoToPage);
         OutlineViewModel = new PdfOutlineViewModel(_documentService);
         BookmarkPanelViewModel = new BookmarkPanelViewModel(
             _bookmarkService,

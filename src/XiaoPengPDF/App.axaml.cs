@@ -24,19 +24,26 @@ public partial class App : Application
         LoggingService.Initialize();
         LoggingService.Info("XiaoPengPDF starting...");
 
-        PdfiumNativeLoader.Initialize();
-        LoggingService.Info("PDFium native library initialized");
-
-        var settings = AppSettings.Load();
-        ApplyTheme(settings.Theme == "Dark");
-
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        try
         {
-            var mainWindow = new MainWindow
+            PdfiumNativeLoader.Initialize();
+            LoggingService.Info("PDFium native library initialized");
+
+            var settings = AppSettings.Load();
+            ApplyTheme(settings.Theme == "Dark");
+
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                DataContext = new MainWindowViewModel()
-            };
-            desktop.MainWindow = mainWindow;
+                var mainWindow = new MainWindow
+                {
+                    DataContext = new MainWindowViewModel()
+                };
+                desktop.MainWindow = mainWindow;
+            }
+        }
+        catch (Exception ex)
+        {
+            LoggingService.Error("Error during initialization", ex);
         }
 
         base.OnFrameworkInitializationCompleted();

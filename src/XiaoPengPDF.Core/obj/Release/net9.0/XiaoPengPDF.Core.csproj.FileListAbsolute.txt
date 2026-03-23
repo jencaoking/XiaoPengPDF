@@ -1,0 +1,12 @@
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Core\bin\Release\net9.0\XiaoPengPDF.Core.deps.json
+J:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Core\bin\Release\net9.0\XiaoPengPDF.Core.dll
+J:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Core\bin\Release\net9.0\XiaoPengPDF.Core.pdb
+J:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Core\obj\Release\net9.0\XiaoPengPDF.Core.GeneratedMSBuildEditorConfig.editorconfig
+J:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Core\obj\Release\net9.0\XiaoPengPDF.Core.AssemblyInfoInputs.cache
+J:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Core\obj\Release\net9.0\XiaoPengPDF.Core.AssemblyInfo.cs
+J:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Core\obj\Release\net9.0\XiaoPengPDF.Core.csproj.CoreCompileInputs.cache
+J:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Core\obj\Release\net9.0\XiaoPengPDF.Core.sourcelink.json
+J:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Core\obj\Release\net9.0\XiaoPengPDF.Core.dll
+J:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Core\obj\Release\net9.0\refint\XiaoPengPDF.Core.dll
+J:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Core\obj\Release\net9.0\XiaoPengPDF.Core.pdb
+j:\PROJECT\C# project\XiaoPengPDF\src\XiaoPengPDF.Core\obj\Release\net9.0\ref\XiaoPengPDF.Core.dll

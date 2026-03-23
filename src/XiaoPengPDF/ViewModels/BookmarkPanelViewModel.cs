@@ -61,6 +61,30 @@ public partial class BookmarkPanelViewModel : ViewModelBase
         _onNavigateToPage = onNavigateToPage;
     }
 
+    public async Task LoadBookmarksAsync(string filePath, int currentPage)
+    {
+        _currentFilePath = filePath;
+        Bookmarks.Clear();
+
+        if (string.IsNullOrEmpty(filePath)) return;
+
+        try
+        {
+            var bookmarks = await _bookmarkService.GetBookmarksAsync(filePath);
+
+            foreach (var bookmark in bookmarks)
+            {
+                Bookmarks.Add(new BookmarkItemViewModel(bookmark, _bookmarkService, _onNavigateToPage));
+            }
+
+            HasBookmarks = Bookmarks.Count > 0;
+        }
+        catch (Exception ex)
+        {
+            HasBookmarks = false;
+        }
+    }
+
     public void LoadBookmarks(string filePath, int currentPage)
     {
         _currentFilePath = filePath;

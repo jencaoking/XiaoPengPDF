@@ -8,6 +8,7 @@ using XiaoPengPDF.Core.Enums;
 using XiaoPengPDF.Services;
 using XiaoPengPDF.Core.Interfaces;
 using XiaoPengPDF.Core.Models;
+using XiaoPengPDF.Infrastructure.Logging;
 
 namespace XiaoPengPDF.ViewModels;
 
@@ -119,13 +120,17 @@ public partial class PdfViewerViewModel : ViewModelBase
                 CurrentPageImageSource = Bitmap.DecodeToWidth(stream, renderWidth);
             }
         }
-        catch
+        catch (Exception ex)
         {
+            LoggingService.Error($"Failed to render page {CurrentPage}", ex);
         }
     }
 
     private double CalculateScale()
     {
+        if (PageWidth <= 0 || PageHeight <= 0)
+            return Zoom;
+
         return _fitMode switch
         {
             PdfFitMode.FitWidth => _availableWidth / PageWidth,

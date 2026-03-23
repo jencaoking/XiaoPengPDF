@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("XiaoPengPDF.Pdfium")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+485f3be2da84fbaee077d64efe0329d82af4d728")]
 [assembly: System.Reflection.AssemblyProductAttribute("XiaoPengPDF.Pdfium")]
 [assembly: System.Reflection.AssemblyTitleAttribute("XiaoPengPDF.Pdfium")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

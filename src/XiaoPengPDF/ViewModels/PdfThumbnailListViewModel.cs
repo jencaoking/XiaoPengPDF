@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using XiaoPengPDF.Services;
 using XiaoPengPDF.Core.Models;
+using XiaoPengPDF.Infrastructure.Logging;
 
 namespace XiaoPengPDF.ViewModels;
 
@@ -20,6 +21,7 @@ public partial class PdfThumbnailViewModel : ViewModelBase
 public partial class PdfThumbnailListViewModel : ViewModelBase
 {
     private readonly PdfDocumentService _documentService;
+    private readonly System.Action<int>? _onPageSelected;
 
     [ObservableProperty]
     private ObservableCollection<PdfThumbnailViewModel> _thumbnails = new();
@@ -27,9 +29,10 @@ public partial class PdfThumbnailListViewModel : ViewModelBase
     [ObservableProperty]
     private int _selectedPage = 1;
 
-    public PdfThumbnailListViewModel(PdfDocumentService documentService)
+    public PdfThumbnailListViewModel(PdfDocumentService documentService, System.Action<int>? onPageSelected = null)
     {
         _documentService = documentService;
+        _onPageSelected = onPageSelected;
     }
 
     public void LoadDocument(PdfDocumentService documentService)
@@ -52,8 +55,9 @@ public partial class PdfThumbnailListViewModel : ViewModelBase
                     150,
                     200);
             }
-            catch
+            catch (Exception ex)
             {
+                LoggingService.Error($"Failed to render thumbnail for page {i + 1}", ex);
             }
 
             Thumbnails.Add(thumbnail);
@@ -62,5 +66,9 @@ public partial class PdfThumbnailListViewModel : ViewModelBase
 
     partial void OnSelectedPageChanged(int value)
     {
+        if (value >= 1 && _onPageSelected != null)
+        {
+            _onPageSelected(value);
+        }
     }
 }

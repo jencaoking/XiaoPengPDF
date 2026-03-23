@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using XiaoPengPDF.Services;
 using XiaoPengPDF.Core.Models;
+using XiaoPengPDF.Infrastructure.Logging;
 
 namespace XiaoPengPDF.ViewModels;
 
@@ -54,8 +55,9 @@ public partial class PdfOutlineViewModel : ViewModelBase
                 OutlineItems.Add(ConvertToOutlineItem(item));
             }
         }
-        catch
+        catch (Exception ex)
         {
+            LoggingService.Error("Failed to load PDF outline", ex);
             HasOutline = false;
         }
     }

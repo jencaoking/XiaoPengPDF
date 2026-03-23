@@ -1,6 +1,7 @@
 using System.Text.Json;
 using XiaoPengPDF.Core.Interfaces;
 using XiaoPengPDF.Core.Models;
+using XiaoPengPDF.Infrastructure.Logging;
 
 namespace XiaoPengPDF.Services;
 
@@ -62,8 +63,21 @@ public class BookmarkService : IBookmarkService
         if (!File.Exists(_bookmarksFilePath))
             return new List<PdfBookmark>();
 
-        var json = await File.ReadAllTextAsync(_bookmarksFilePath);
-        return JsonSerializer.Deserialize<List<PdfBookmark>>(json) ?? new List<PdfBookmark>();
+        try
+        {
+            var json = await File.ReadAllTextAsync(_bookmarksFilePath);
+            return JsonSerializer.Deserialize<List<PdfBookmark>>(json) ?? new List<PdfBookmark>();
+        }
+        catch (JsonException ex)
+        {
+            LoggingService.Error("Failed to parse bookmarks JSON, file may be corrupted", ex);
+            return new List<PdfBookmark>();
+        }
+        catch (Exception ex)
+        {
+            LoggingService.Error("Failed to load bookmarks", ex);
+            return new List<PdfBookmark>();
+        }
     }
 
     private async Task SaveAllBookmarksAsync(List<PdfBookmark> bookmarks)

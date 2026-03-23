@@ -82,12 +82,12 @@ public partial class MainWindow : Window
                 vm.ShowGoToPageCommand.Execute(null);
                 e.Handled = true;
             }
-            else if (e.Key == Key.D0 && ctrl || e.Key == Key.NumPad0 && ctrl)
+            else if ((e.Key == Key.D0 && ctrl) || (e.Key == Key.NumPad0 && ctrl))
             {
                 vm.FitPageCommand.Execute(null);
                 e.Handled = true;
             }
-            else if (e.Key == Key.D1 && ctrl || e.Key == Key.NumPad1 && ctrl)
+            else if ((e.Key == Key.D1 && ctrl) || (e.Key == Key.NumPad1 && ctrl))
             {
                 vm.FitWidthCommand.Execute(null);
                 e.Handled = true;
