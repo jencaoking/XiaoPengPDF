@@ -187,11 +187,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj",
+      "projectUniqueName": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj",
       "projectName": "XiaoPengPDF.Services",
-      "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj",
+      "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\XiaoPengPDF.Services.csproj",
       "packagesPath": "C:\\Users\\66393\\.nuget\\packages\\",
-      "outputPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\obj\\",
+      "outputPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\66393\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -206,11 +206,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
-              "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj"
+            "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj": {
+              "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Core\\XiaoPengPDF.Core.csproj"
             },
-            "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\XiaoPengPDF.Infrastructure.csproj": {
-              "projectPath": "j:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\XiaoPengPDF.Infrastructure.csproj"
+            "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\XiaoPengPDF.Infrastructure.csproj": {
+              "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Infrastructure\\XiaoPengPDF.Infrastructure.csproj"
             },
             "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj": {
               "projectPath": "J:\\PROJECT\\C# project\\XiaoPengPDF\\src\\XiaoPengPDF.Pdfium\\XiaoPengPDF.Pdfium.csproj"

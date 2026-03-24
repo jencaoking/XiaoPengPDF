@@ -38,6 +38,10 @@ public partial class App : Application
                 {
                     DataContext = new MainWindowViewModel()
                 };
+                if (mainWindow.DataContext is MainWindowViewModel vm)
+                {
+                    vm.SetWindow(mainWindow);
+                }
                 desktop.MainWindow = mainWindow;
             }
         }
