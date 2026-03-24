@@ -14,7 +14,7 @@
                     <Border Margin="4" Padding="4" Background="#F8F8F8" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="4">
                         <StackPanel Spacing="4">
                             <Border Background="White" Height="160" CornerRadius="2">
-                                <Image Source="{Binding Thumbnail}" Stretch="Uniform" Width="120" Height="160"/>
+                                <Image Source="{Binding ThumbnailBitmap}" Stretch="Uniform" Width="120" Height="160"/>
                             </Border>
                             <TextBlock Text="{Binding PageNumber, StringFormat='Page {0}'}"
                                        HorizontalAlignment="Center"

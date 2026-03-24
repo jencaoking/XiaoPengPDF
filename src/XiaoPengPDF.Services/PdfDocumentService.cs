@@ -36,6 +36,7 @@ public class PdfDocumentService
         CurrentDocument?.Dispose();
         CurrentDocument = null;
         _renderer?.Dispose();
+        _renderer = null;
         _textExtractor = null;
         _outlineProvider = null;
         _searchService = null;

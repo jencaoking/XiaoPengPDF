@@ -22,16 +22,35 @@ public class PdfiumDocument : IPdfDocument, IDisposable
     public PdfiumDocument(string filePath)
     {
         FilePath = filePath;
+        string pathToLoad = filePath;
 
-        _document = FPDF_LoadDocument(filePath, "");
+        if (!string.IsNullOrEmpty(Path.GetDirectoryName(filePath)))
+        {
+            pathToLoad = Path.GetFullPath(filePath);
+        }
+
+        _document = FPDF_LoadDocument(pathToLoad, "");
 
         if (_document == IntPtr.Zero)
         {
-            throw new InvalidOperationException($"Failed to load PDF document: {filePath}");
+            int errorCode = FPDF_GetLastError();
+            string errorMsg = errorCode switch
+            {
+                1 => "Unknown error",
+                2 => "File not found or cannot be opened",
+                3 => "Permission denied",
+                4 => "File format error",
+                5 => "Password required or invalid password",
+                _ => $"Error code: {errorCode}"
+            };
+            throw new InvalidOperationException($"Failed to load PDF document: {filePath}. {errorMsg}");
         }
 
         PageCount = FPDF_GetPageCount(_document);
     }
+
+    [DllImport("pdfium", EntryPoint = "FPDF_GetLastError")]
+    private static extern int FPDF_GetLastError();
 
     public PdfPage GetPage(int pageNumber)
     {

@@ -1,5 +1,9 @@
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Runtime.InteropServices;
+using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
+using SkiaSharp;
 using XiaoPengPDF.Services;
 using XiaoPengPDF.Core.Models;
 using XiaoPengPDF.Infrastructure.Logging;
@@ -12,10 +16,39 @@ public partial class PdfThumbnailViewModel : ViewModelBase
     private int _pageNumber;
 
     [ObservableProperty]
-    private byte[]? _thumbnail;
+    private Bitmap? _thumbnailBitmap;
 
     [ObservableProperty]
     private bool _isSelected;
+
+    public void SetThumbnailData(byte[] thumbnailData, int width, int height)
+    {
+        if (thumbnailData == null || thumbnailData.Length == 0)
+            return;
+
+        try
+        {
+            using var bitmap = new SKBitmap(width, height, SKColorType.Rgba8888, SKAlphaType.Premul);
+            IntPtr pixels = bitmap.GetPixels();
+            Marshal.Copy(thumbnailData, 0, pixels, thumbnailData.Length);
+
+            using (var image = SKImage.FromBitmap(bitmap))
+            {
+                using (var data = image.Encode(SKEncodedImageFormat.Png, 100))
+                {
+                    using var stream = new MemoryStream();
+                    data.SaveTo(stream);
+                    stream.Seek(0, SeekOrigin.Begin);
+                    ThumbnailBitmap?.Dispose();
+                    ThumbnailBitmap = new Bitmap(stream);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            LoggingService.Error($"Failed to convert thumbnail for page {PageNumber}", ex);
+        }
+    }
 }
 
 public partial class PdfThumbnailListViewModel : ViewModelBase
@@ -49,11 +82,12 @@ public partial class PdfThumbnailListViewModel : ViewModelBase
 
             try
             {
-                thumbnail.Thumbnail = documentService.Renderer.RenderThumbnail(
+                var thumbnailData = documentService.Renderer.RenderThumbnail(
                     documentService.CurrentDocument,
                     i,
                     150,
                     200);
+                thumbnail.SetThumbnailData(thumbnailData, 150, 200);
             }
             catch (Exception ex)
             {

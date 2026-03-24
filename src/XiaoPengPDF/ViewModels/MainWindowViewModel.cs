@@ -101,6 +101,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
     partial void OnCurrentPageInputChanged(string value)
     {
+        if (TotalPages <= 0) return;
         if (int.TryParse(value, out int page) && page >= 1 && page <= TotalPages)
         {
             GoToPage(page);
@@ -467,7 +468,7 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     [RelayCommand]
-    private void CopyCurrentPageText()
+    private async Task CopyCurrentPageText()
     {
         if (_documentService.CurrentDocument == null)
         {
@@ -481,10 +482,14 @@ public partial class MainWindowViewModel : ViewModelBase
             if (!string.IsNullOrEmpty(text))
             {
                 var topLevel = TopLevel.GetTopLevel(_window);
-                if (topLevel != null)
+                if (topLevel != null && topLevel.Clipboard != null)
                 {
-                    topLevel.Clipboard?.SetTextAsync(text);
+                    await topLevel.Clipboard.SetTextAsync(text);
                     StatusText = "已复制当前页文本到剪贴板";
+                }
+                else
+                {
+                    StatusText = "无法访问剪贴板";
                 }
             }
             else

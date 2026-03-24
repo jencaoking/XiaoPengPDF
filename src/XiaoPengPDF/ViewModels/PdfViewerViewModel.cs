@@ -1,9 +1,11 @@
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using SkiaSharp;
 using XiaoPengPDF.Core.Enums;
 using XiaoPengPDF.Services;
 using XiaoPengPDF.Core.Interfaces;
@@ -61,10 +63,12 @@ public partial class PdfViewerViewModel : ViewModelBase
     public void LoadDocument(PdfDocumentService documentService)
     {
         if (documentService.CurrentDocument == null) return;
+        if (documentService.CurrentDocument.PageCount == 0) return;
 
         IsDocumentLoaded = true;
         _fitMode = PdfFitMode.FitWidth;
         Zoom = 1.0;
+        CurrentPage = 1;
         RenderCurrentPage();
     }
 
@@ -104,20 +108,33 @@ public partial class PdfViewerViewModel : ViewModelBase
             PageHeight = page.Height;
 
             double scale = CalculateScale();
-            int renderWidth = (int)(PageWidth * scale * 2);
-            int renderHeight = (int)(PageHeight * scale * 2);
+            int renderWidth = (int)(PageWidth * scale);
+            int renderHeight = (int)(PageHeight * scale);
 
             CurrentPageImage = _documentService.Renderer.RenderPage(
                 _documentService.CurrentDocument,
                 CurrentPage - 1,
                 renderWidth,
                 renderHeight,
-                scale);
+                1.0);
 
             if (CurrentPageImage != null)
             {
-                using var stream = new MemoryStream(CurrentPageImage);
-                CurrentPageImageSource = Bitmap.DecodeToWidth(stream, renderWidth);
+                using var bitmap = new SKBitmap(renderWidth, renderHeight, SKColorType.Rgba8888, SKAlphaType.Premul);
+                IntPtr pixels = bitmap.GetPixels();
+                Marshal.Copy(CurrentPageImage, 0, pixels, CurrentPageImage.Length);
+
+                using (var image = SKImage.FromBitmap(bitmap))
+                {
+                    using (var data = image.Encode(SKEncodedImageFormat.Png, 100))
+                    {
+                        using var stream = new MemoryStream();
+                        data.SaveTo(stream);
+                        stream.Seek(0, SeekOrigin.Begin);
+                        CurrentPageImageSource?.Dispose();
+                        CurrentPageImageSource = new Bitmap(stream);
+                    }
+                }
             }
         }
         catch (Exception ex)

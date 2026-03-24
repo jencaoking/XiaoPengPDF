@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Linq;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using XiaoPengPDF.Core.Models;
@@ -92,14 +93,18 @@ public partial class BookmarkPanelViewModel : ViewModelBase
 
         if (string.IsNullOrEmpty(filePath)) return;
 
-        var bookmarks = _bookmarkService.GetBookmarksAsync(filePath).GetAwaiter().GetResult();
-
-        foreach (var bookmark in bookmarks)
+        Task.Run(async () =>
         {
-            Bookmarks.Add(new BookmarkItemViewModel(bookmark, _bookmarkService, _onNavigateToPage));
-        }
-
-        HasBookmarks = Bookmarks.Count > 0;
+            var bookmarks = await _bookmarkService.GetBookmarksAsync(filePath);
+            Avalonia.Threading.Dispatcher.UIThread.Post(() =>
+            {
+                foreach (var bookmark in bookmarks)
+                {
+                    Bookmarks.Add(new BookmarkItemViewModel(bookmark, _bookmarkService, _onNavigateToPage));
+                }
+                HasBookmarks = Bookmarks.Count > 0;
+            });
+        });
     }
 
     [RelayCommand]
