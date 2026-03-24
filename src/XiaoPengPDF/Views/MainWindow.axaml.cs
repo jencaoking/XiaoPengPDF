@@ -14,7 +14,9 @@ public partial class MainWindow : Window
 
     public MainWindow()
     {
+        LoggingService.Info("MainWindow constructor starting...");
         InitializeComponent();
+        LoggingService.Info("MainWindow InitializeComponent done");
 
         AddHandler(DragDrop.DragEnterEvent, OnDragEnter);
         AddHandler(DragDrop.DragLeaveEvent, OnDragLeave);
@@ -23,6 +25,7 @@ public partial class MainWindow : Window
         KeyDown += OnKeyDown;
 
         Loaded += OnLoaded;
+        LoggingService.Info("MainWindow constructor completed");
     }
 
     private void OnLoaded(object? sender, RoutedEventArgs e)

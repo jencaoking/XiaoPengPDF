@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("XiaoPengPDF.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+832e3f654e9ecc5e86cb8c50acc591462ba5f601")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f99d2c603ec38b3966d23558820f3e10c5a9e25f")]
 [assembly: System.Reflection.AssemblyProductAttribute("XiaoPengPDF.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("XiaoPengPDF.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
