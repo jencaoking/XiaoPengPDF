@@ -12,21 +12,25 @@
                       VerticalScrollBarVisibility="Auto"
                       AllowAutoHide="True">
             <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Border Background="White" BoxShadow="0 2 8 0 #40000000" Padding="0">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="{Binding DropHintText}"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   FontSize="18"
-                                   Foreground="#999999"
-                                   IsVisible="{Binding !IsDocumentLoaded}"/>
+                <Border Background="White" BoxShadow="0 4 20 0 #40000000" CornerRadius="4">
+                    <Panel>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="{Binding !IsDocumentLoaded}">
+                            <PathIcon Data="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M8,15.01L9.41,16.42L11,14.84V19H13V14.84L14.59,16.43L16.01,15.01L12.01,11L8,15.01Z"
+                                      Width="64" Height="64" Foreground="#CBD5E1" HorizontalAlignment="Center"/>
+                            <TextBlock Text="拖拽PDF文件到此处或点击打开"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="16"
+                                       Foreground="#94A3B8"
+                                       Margin="0,16,0,0"/>
+                        </StackPanel>
 
                         <Image Source="{Binding CurrentPageImageSource}"
                                Width="{Binding PageWidth}"
                                Height="{Binding PageHeight}"
                                Stretch="Uniform"
                                IsVisible="{Binding IsDocumentLoaded}"/>
-                    </StackPanel>
+                    </Panel>
                 </Border>
             </Panel>
         </ScrollViewer>

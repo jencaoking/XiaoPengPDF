@@ -10,8 +10,6 @@ namespace XiaoPengPDF.Views;
 
 public partial class MainWindow : Window
 {
-    private RecentFilesService? _recentFilesService;
-
     public MainWindow()
     {
         LoggingService.Info("MainWindow constructor starting...");
@@ -30,37 +28,9 @@ public partial class MainWindow : Window
 
     private void OnLoaded(object? sender, RoutedEventArgs e)
     {
-        if (DataContext is MainWindowViewModel vm)
+        if (DataContext is MainWindowViewModel)
         {
-            _recentFilesService = new RecentFilesService(AppSettings.Load());
-            UpdateRecentFilesMenu(vm);
-        }
-    }
-
-    public void UpdateRecentFilesMenu(MainWindowViewModel vm)
-    {
-        if (_recentFilesService == null) return;
-
-        RecentFilesMenuItem.Items.Clear();
-        var recentFiles = _recentFilesService.GetRecentFiles();
-
-        if (recentFiles.Count == 0)
-        {
-            var emptyItem = new MenuItem { Header = "(无最近文件)", IsEnabled = false };
-            RecentFilesMenuItem.Items.Add(emptyItem);
-            return;
-        }
-
-        foreach (var filePath in recentFiles)
-        {
-            var menuItem = new MenuItem
-            {
-                Header = System.IO.Path.GetFileName(filePath)
-            };
-            ToolTip.SetTip(menuItem, filePath);
-            var path = filePath;
-            menuItem.Click += (s, e) => vm.OpenFile(path);
-            RecentFilesMenuItem.Items.Add(menuItem);
+            _ = new RecentFilesService(AppSettings.Load());
         }
     }
 

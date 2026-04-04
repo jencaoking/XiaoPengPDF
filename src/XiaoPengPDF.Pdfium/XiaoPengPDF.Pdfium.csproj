@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>XiaoPengPDF.Pdfium</RootNamespace>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>

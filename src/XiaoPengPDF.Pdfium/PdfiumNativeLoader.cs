@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace XiaoPengPDF.Pdfium;
@@ -5,7 +6,7 @@ namespace XiaoPengPDF.Pdfium;
 public static class PdfiumNativeLoader
 {
     private static bool _isInitialized = false;
-    private static readonly object _lock = new();
+    private static readonly Lock _lock = new();
     private static IntPtr _pdfiumHandle = IntPtr.Zero;
 
     public static void Initialize()
@@ -30,6 +31,7 @@ public static class PdfiumNativeLoader
                 {
                     if (NativeLibrary.TryLoad(path, out _pdfiumHandle))
                     {
+                        NativeLibrary.SetDllImportResolver(typeof(PdfiumNativeLoader).Assembly, DllImportResolver);
                         _isInitialized = true;
                         return;
                     }
@@ -38,9 +40,19 @@ public static class PdfiumNativeLoader
 
             if (NativeLibrary.TryLoad(dllName, out _pdfiumHandle))
             {
+                NativeLibrary.SetDllImportResolver(typeof(PdfiumNativeLoader).Assembly, DllImportResolver);
                 _isInitialized = true;
             }
         }
+    }
+
+    private static IntPtr DllImportResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
+    {
+        if (libraryName == "pdfium" || libraryName == "pdfium.dll" || libraryName == "libpdfium.so" || libraryName == "libpdfium.dylib")
+        {
+            return _pdfiumHandle;
+        }
+        return IntPtr.Zero;
     }
 
     private static string[] GetSearchPaths()
@@ -67,7 +79,7 @@ public static class PdfiumNativeLoader
             paths.Add(Path.Combine(basePath, "runtimes", "osx-x64", "libpdfium.dylib"));
         }
 
-        return paths.ToArray();
+        return [.. paths];
     }
 
     public static IntPtr GetHandle() => _pdfiumHandle;

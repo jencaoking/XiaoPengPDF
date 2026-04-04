@@ -4,6 +4,9 @@
              RequestedThemeVariant="Light">
     <Application.Styles>
         <FluentTheme />
+        <Style Selector="Window">
+            <Setter Property="SystemDecorations" Value="Full"/>
+        </Style>
     </Application.Styles>
     <Application.Resources>
         <ResourceDictionary>

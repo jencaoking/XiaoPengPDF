@@ -7,28 +7,39 @@
              x:Class="XiaoPengPDF.Views.PdfThumbnailListView"
              x:DataType="vm:PdfThumbnailListViewModel">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-        <ItemsControl ItemsSource="{Binding Thumbnails}" Margin="8">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate x:DataType="vm:PdfThumbnailViewModel">
-                    <Border Margin="4" Padding="4" Background="#F8F8F8" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="4">
-                        <StackPanel Spacing="4">
-                            <Border Background="White" Height="160" CornerRadius="2">
-                                <Image Source="{Binding ThumbnailBitmap}" Stretch="Uniform" Width="120" Height="160"/>
-                            </Border>
-                            <TextBlock Text="{Binding PageNumber, StringFormat='Page {0}'}"
-                                       HorizontalAlignment="Center"
-                                       FontSize="11"
-                                       Foreground="#666666"/>
-                        </StackPanel>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
-    </ScrollViewer>
+    <Grid Background="#F8FAFC">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#FFFFFF" BorderBrush="#E2E8F0" BorderThickness="0,0,0,1" Padding="12,8">
+            <TextBlock Text="缩略图" FontWeight="SemiBold" FontSize="13" VerticalAlignment="Center" Foreground="#1E293B"/>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <ItemsControl ItemsSource="{Binding Thumbnails}" Margin="8">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="vm:PdfThumbnailViewModel">
+                        <Border Margin="4" Padding="6" Background="#FFFFFF" BorderBrush="#E2E8F0" BorderThickness="1" CornerRadius="8">
+                            <StackPanel Spacing="6">
+                                <Border Background="#F8FAFC" Height="140" CornerRadius="4" Padding="8">
+                                    <Image Source="{Binding ThumbnailBitmap}" Stretch="Uniform" Width="110" Height="140"/>
+                                </Border>
+                                <TextBlock Text="{Binding PageNumber, StringFormat='第 {0} 页'}"
+                                           HorizontalAlignment="Center"
+                                           FontSize="11"
+                                           Foreground="#64748B"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

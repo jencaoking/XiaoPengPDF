@@ -1,10 +1,11 @@
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using XiaoPengPDF.Core.Interfaces;
 using XiaoPengPDF.Core.Models;
 
 namespace XiaoPengPDF.Pdfium;
 
-public class PdfiumSearchService : IPdfSearchService
+public partial class PdfiumSearchService : IPdfSearchService
 {
     private const string PdfiumDll = "pdfium";
 
@@ -15,7 +16,7 @@ public class PdfiumSearchService : IPdfSearchService
 
     public List<PdfSearchResult> Search(IPdfDocument document, string query, bool caseSensitive = false)
     {
-        if (document is not PdfiumDocument pdfiumDoc)
+        if (document is not PdfiumDocument)
             throw new ArgumentException("Document must be a PdfiumDocument", nameof(document));
 
         var results = new List<PdfSearchResult>();
@@ -32,13 +33,18 @@ public class PdfiumSearchService : IPdfSearchService
             throw new ArgumentException("Document must be a PdfiumDocument", nameof(document));
 
         var results = new List<PdfSearchResult>();
-        IntPtr searchHandle = FPDFText_FindStart(pdfiumDoc.Handle, pageNumber, query, caseSensitive ? 0 : 2);
 
-        if (searchHandle == IntPtr.Zero)
+        IntPtr textPage = FPDFText_LoadPage(pdfiumDoc.Handle, pageNumber);
+        if (textPage == IntPtr.Zero)
             return results;
 
+        IntPtr searchHandle = IntPtr.Zero;
         try
         {
+            searchHandle = FPDFText_FindStart(textPage, query, caseSensitive ? 0 : 2);
+            if (searchHandle == IntPtr.Zero)
+                return results;
+
             while (FPDFText_FindNext(searchHandle))
             {
                 int startIndex = FPDFText_GetSchResultIndex(searchHandle);
@@ -58,24 +64,40 @@ public class PdfiumSearchService : IPdfSearchService
         }
         finally
         {
-            FPDFText_FindClose(searchHandle);
+            if (searchHandle != IntPtr.Zero)
+                FPDFText_FindClose(searchHandle);
+            FPDFText_ClosePage(textPage);
         }
 
         return results;
     }
 
-    [DllImport(PdfiumDll, EntryPoint = "FPDFText_FindStart", CallingConvention = CallingConvention.Cdecl)]
-    private static extern IntPtr FPDFText_FindStart(IntPtr document, int pageIndex, [MarshalAs(UnmanagedType.LPWStr)] string query, int flags);
+    [LibraryImport(PdfiumDll, EntryPoint = "FPDFText_LoadPage")]
+    [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+    private static partial IntPtr FPDFText_LoadPage(IntPtr document, int pageIndex);
 
-    [DllImport(PdfiumDll, EntryPoint = "FPDFText_FindNext", CallingConvention = CallingConvention.Cdecl)]
-    private static extern bool FPDFText_FindNext(IntPtr handle);
+    [LibraryImport(PdfiumDll, EntryPoint = "FPDFText_ClosePage")]
+    [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+    private static partial void FPDFText_ClosePage(IntPtr textPage);
 
-    [DllImport(PdfiumDll, EntryPoint = "FPDFText_GetSchResultIndex", CallingConvention = CallingConvention.Cdecl)]
-    private static extern int FPDFText_GetSchResultIndex(IntPtr handle);
+    [LibraryImport(PdfiumDll, EntryPoint = "FPDFText_FindStart", StringMarshalling = StringMarshalling.Utf16)]
+    [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+    private static partial IntPtr FPDFText_FindStart(IntPtr textPage, [MarshalAs(UnmanagedType.LPWStr)] string query, int flags);
 
-    [DllImport(PdfiumDll, EntryPoint = "FPDFText_GetMatchLength", CallingConvention = CallingConvention.Cdecl)]
-    private static extern int FPDFText_GetMatchLength(IntPtr handle);
+    [LibraryImport(PdfiumDll, EntryPoint = "FPDFText_FindNext")]
+    [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static partial bool FPDFText_FindNext(IntPtr handle);
 
-    [DllImport(PdfiumDll, EntryPoint = "FPDFText_FindClose", CallingConvention = CallingConvention.Cdecl)]
-    private static extern void FPDFText_FindClose(IntPtr handle);
+    [LibraryImport(PdfiumDll, EntryPoint = "FPDFText_GetSchResultIndex")]
+    [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+    private static partial int FPDFText_GetSchResultIndex(IntPtr handle);
+
+    [LibraryImport(PdfiumDll, EntryPoint = "FPDFText_GetMatchLength")]
+    [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+    private static partial int FPDFText_GetMatchLength(IntPtr handle);
+
+    [LibraryImport(PdfiumDll, EntryPoint = "FPDFText_FindClose")]
+    [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+    private static partial void FPDFText_FindClose(IntPtr handle);
 }

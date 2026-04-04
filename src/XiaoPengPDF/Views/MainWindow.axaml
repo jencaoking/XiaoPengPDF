@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
         x:Class="XiaoPengPDF.Views.MainWindow"
-        Title="小鹏PDF阅读器"
+        Title="小鹏 PDF 阅读器"
         MinWidth="800"
         MinHeight="600"
         Width="1200"
@@ -19,62 +19,131 @@
     </Design.DataContext>
 
     <Grid RowDefinitions="Auto,*,Auto">
-        <Menu Grid.Row="0" Padding="4">
-            <MenuItem Header="文件(_F)">
-                <MenuItem Header="打开(_O)" Command="{Binding OpenCommand}" InputGesture="Ctrl+O"/>
-                <MenuItem Header="关闭(_C)" Command="{Binding CloseCommand}"/>
-                <Separator/>
-                <MenuItem Header="打印(_P)" Command="{Binding PrintCommand}"/>
-                <Separator/>
-                <MenuItem Header="最近文件" x:Name="RecentFilesMenuItem"/>
-                <Separator/>
-                <MenuItem Header="退出(_X)" Command="{Binding ExitCommand}"/>
-            </MenuItem>
-            <MenuItem Header="编辑(_E)">
-                <MenuItem Header="复制当前页文本" Command="{Binding CopyCurrentPageTextCommand}"/>
-            </MenuItem>
-            <MenuItem Header="视图(_V)">
-                <MenuItem Header="放大" Command="{Binding ZoomInCommand}"/>
-                <MenuItem Header="缩小" Command="{Binding ZoomOutCommand}"/>
-                <MenuItem Header="适应宽度" Command="{Binding FitWidthCommand}"/>
-                <MenuItem Header="适应页面" Command="{Binding FitPageCommand}"/>
-                <Separator/>
-                <MenuItem Header="切换主题" Command="{Binding ToggleThemeCommand}"/>
-                <Separator/>
-                <MenuItem Header="全屏" Command="{Binding FullScreenCommand}"/>
-            </MenuItem>
-            <MenuItem Header="搜索(_S)">
-                <MenuItem Header="查找(_F)" Command="{Binding ToggleSearchCommand}"/>
-            </MenuItem>
-            <MenuItem Header="帮助(_H)">
-                <MenuItem Header="关于" Command="{Binding AboutCommand}"/>
-            </MenuItem>
-        </Menu>
+
+        <Border Grid.Row="0" Background="#FFFFFF" BorderBrush="#E2E8F0" BorderThickness="0,0,0,1">
+            <Grid ColumnDefinitions="Auto,*,Auto" Height="48">
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="8,0" Spacing="4">
+                    <TextBlock Text="小鹏PDF" FontWeight="Bold" FontSize="16" Foreground="#3B82F6" VerticalAlignment="Center" Margin="8,0"/>
+                    <Border Width="1" Background="#E2E8F0" Margin="8,8"/>
+                </StackPanel>
+
+                <Grid Grid.Column="1" ColumnDefinitions="Auto,*,Auto">
+
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="2" Margin="8,0">
+                        <Button Classes="IconButton" Command="{Binding OpenCommand}" ToolTip.Tip="打开文件 (Ctrl+O)">
+                            <Panel>
+                                <PathIcon Data="M19,20H4C2.89,20 2,19.1 2,18V6A2,2 0 0,1 4,4H9L12,7H19A2,2 0 0,1 21,9V18A2,2 0 0,1 19,20Z" Width="18" Height="18" Foreground="#64748B"/>
+                            </Panel>
+                        </Button>
+                        <Button Classes="IconButton" Command="{Binding CloseCommand}" ToolTip.Tip="关闭文件">
+                            <PathIcon Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" Width="16" Height="16" Foreground="#64748B"/>
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="2" HorizontalAlignment="Center">
+                        <Button Classes="IconButton" Command="{Binding PreviousPageCommand}" ToolTip.Tip="上一页" MinWidth="32">
+                            <PathIcon Data="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" Width="16" Height="16" Foreground="#64748B"/>
+                        </Button>
+                        <Border Background="#F8FAFC" CornerRadius="6" Padding="8,4" Margin="4,0">
+                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                <TextBox Text="{Binding CurrentPageInput}" Watermark="页码" MinWidth="50"
+                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                         Background="Transparent" BorderThickness="0" Padding="4,0"/>
+                                <TextBlock Text="/" VerticalAlignment="Center" Foreground="#94A3B8"/>
+                                <TextBlock Text="{Binding TotalPages}" VerticalAlignment="Center" Foreground="#64748B"/>
+                            </StackPanel>
+                        </Border>
+                        <Button Classes="IconButton" Command="{Binding NextPageCommand}" ToolTip.Tip="下一页" MinWidth="32">
+                            <PathIcon Data="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" Width="16" Height="16" Foreground="#64748B"/>
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="2" Margin="8,0">
+                        <Button Classes="IconButton" Command="{Binding ZoomOutCommand}" ToolTip.Tip="缩小">
+                            <Panel>
+                                <PathIcon Data="M19,13H5V11H19V13Z" Width="16" Height="16" Foreground="#64748B"/>
+                            </Panel>
+                        </Button>
+                        <Border Background="#F8FAFC" CornerRadius="6" Padding="8,4" MinWidth="70" Margin="4,0">
+                            <TextBlock Text="{Binding ZoomPercent}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       Foreground="#64748B" FontSize="12"/>
+                        </Border>
+                        <Button Classes="IconButton" Command="{Binding ZoomInCommand}" ToolTip.Tip="放大">
+                            <PathIcon Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Width="16" Height="16" Foreground="#64748B"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="2" Margin="8,0">
+                    <Button Classes="IconButton" Command="{Binding ShowThumbnailsCommand}" ToolTip.Tip="缩略图" x:Name="ThumbnailsBtn">
+                        <PathIcon Data="M4,4H6V6H4V4M6,4H8V6H6V4M8,4H10V6H8V4M10,4H12V6H10V4M4,6H6V8H4V6M6,6H8V8H6V6M8,6H10V8H8V6M10,6H12V8H10V6M4,8H6V10H4V8M6,8H8V10H6V8M8,8H10V10H8V8M10,8H12V10H10V8M4,10H6V12H4V10M6,10H8V12H6V10M8,10H10V12H8V10M10,10H12V12H10V10M10,4V6H12V4H10M4,10V12H6V10H4M6,10H8V12H6V10M8,10H10V12H8V10M10,10H12V12H10V10M10,8V10H12V8H10M4,8V10H6V8H4M6,8H8V10H6V8M8,8H10V10H8V8" Width="18" Height="18" Foreground="#64748B"/>
+                    </Button>
+                    <Button Classes="IconButton" Command="{Binding ShowOutlineCommand}" ToolTip.Tip="大纲" x:Name="OutlineBtn">
+                        <PathIcon Data="M3,4H21V6H3V4M9,4H11V6H9V4M13,4H15V6H13V4M3,8H21V10H3V8M3,12H21V14H3V12M3,16H21V18H3V16M3,20H21V22H3V20" Width="18" Height="18" Foreground="#64748B"/>
+                    </Button>
+                    <Button Classes="IconButton" Command="{Binding ShowBookmarksCommand}" ToolTip.Tip="书签" x:Name="BookmarksBtn">
+                        <PathIcon Data="M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5A2,2 0 0,0 17,3Z" Width="18" Height="18" Foreground="#64748B"/>
+                    </Button>
+                    <Border Width="1" Background="#E2E8F0" Margin="8,8"/>
+                    <Button Classes="IconButton" Command="{Binding ToggleSearchCommand}" ToolTip.Tip="搜索 (Ctrl+F)">
+                        <PathIcon Data="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" Width="18" Height="18" Foreground="#64748B"/>
+                    </Button>
+                    <Button Classes="IconButton" Command="{Binding FitWidthCommand}" ToolTip.Tip="适应宽度">
+                        <PathIcon Data="M4,4H20V20H4V4M6,8H18V16H6V8M6,6V18H18V6H6Z" Width="18" Height="18" Foreground="#64748B"/>
+                    </Button>
+                    <Button Classes="IconButton" Command="{Binding FitPageCommand}" ToolTip.Tip="适应页面">
+                        <PathIcon Data="M4,4H8V8H4V4M10,4H14V8H10V4M16,4H20V8H16V4M4,10H8V14H4V10M10,10H14V14H10V10M16,10H20V14H16V10M4,16H8V20H4V16M10,16H14V20H10V16M16,16H20V20H16V16Z" Width="18" Height="18" Foreground="#64748B"/>
+                    </Button>
+                    <Border Width="1" Background="#E2E8F0" Margin="8,8"/>
+                    <Button Classes="IconButton" Command="{Binding ToggleThemeCommand}" ToolTip.Tip="切换主题">
+                        <Panel>
+                            <PathIcon Data="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z" Width="18" Height="18" Foreground="#64748B" IsVisible="{Binding !IsDarkMode}"/>
+                            <PathIcon Data="M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8M12,18A6,6 0 0,0 18,12C18,10.57 17.5,9.26 16.68,8.18L16.32,7.82C15.22,9.13 14.67,10.73 14.67,12.42C14.67,14.11 15.22,15.71 16.32,17L16.68,16.82C17.5,15.74 18,14.43 18,13V12A6,6 0 0,0 12,6A6,6 0 0,0 6,12C6,14.43 6.5,15.74 7.32,16.82L7.68,17.18C8.78,15.87 9.33,14.27 9.33,12.58C9.33,10.89 8.78,9.29 7.68,8L7.32,7.82C6.5,8.9 6,10.21 6,12A6,6 0 0,0 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z" Width="18" Height="18" Foreground="#64748B" IsVisible="{Binding IsDarkMode}"/>
+                        </Panel>
+                    </Button>
+                    <Button Classes="IconButton" Command="{Binding FullScreenCommand}" ToolTip.Tip="全屏">
+                        <PathIcon Data="M5,5H10V7H7V10H5V5M14,5H19V10H17V7H14V5M5,14H10V17H7V20H5V14M19,14V19H14V17H17V14H19Z" Width="18" Height="18" Foreground="#64748B"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
 
         <Grid Grid.Row="1" ColumnDefinitions="Auto,*">
-            <Border Grid.Column="0" Width="200" BorderBrush="#E2E8F0" BorderThickness="0,0,1,0" IsVisible="{Binding IsSidebarVisible}">
+            <Border Grid.Column="0" Width="{Binding SidebarWidth}" Background="#F8FAFC" BorderBrush="#E2E8F0" BorderThickness="0,0,1,0" IsVisible="{Binding IsSidebarVisible}">
                 <Grid RowDefinitions="Auto,*">
-                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="8" Spacing="8">
-                        <Button Content="缩略图" Command="{Binding ShowThumbnailsCommand}" Padding="8,4"/>
-                        <Button Content="大纲" Command="{Binding ShowOutlineCommand}" Padding="8,4"/>
-                        <Button Content="书签" Command="{Binding ShowBookmarksCommand}" Padding="8,4"/>
-                    </StackPanel>
+                    <Border Grid.Row="0" Background="#FFFFFF" BorderBrush="#E2E8F0" BorderThickness="0,0,0,1">
+                        <Grid ColumnDefinitions="*,*,*">
+                            <Button Grid.Column="0" Classes="SidebarToggle" Content="缩略图" Command="{Binding ShowThumbnailsCommand}" HorizontalAlignment="Stretch"/>
+                            <Button Grid.Column="1" Classes="SidebarToggle" Content="大纲" Command="{Binding ShowOutlineCommand}" HorizontalAlignment="Stretch"/>
+                            <Button Grid.Column="2" Classes="SidebarToggle" Content="书签" Command="{Binding ShowBookmarksCommand}" HorizontalAlignment="Stretch"/>
+                        </Grid>
+                    </Border>
                     <ContentControl Grid.Row="1" Content="{Binding CurrentSidebarContent}"/>
                 </Grid>
             </Border>
 
             <Grid Grid.Column="1" RowDefinitions="Auto,*">
-                <Border Grid.Row="0" IsVisible="{Binding IsSearchPanelVisible}" BorderBrush="#E2E8F0" BorderThickness="0,0,0,1" Padding="8">
-                    <Grid ColumnDefinitions="*,Auto,Auto" Margin="0">
-                        <TextBox Grid.Column="0" Text="{Binding SearchText}" Watermark="输入搜索内容..." MinWidth="300"/>
-                        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="4" Margin="8,0,0,0">
-                            <Button Content="查找" Command="{Binding SearchCommand}" Padding="12,4"/>
-                            <Button Content="上一个" Command="{Binding SearchPreviousCommand}" Padding="8,4"/>
-                            <Button Content="下一个" Command="{Binding SearchNextCommand}" Padding="8,4"/>
+                <Border Grid.Row="0" IsVisible="{Binding IsSearchPanelVisible}" Background="#FFFFFF" BorderBrush="#E2E8F0" BorderThickness="0,0,0,1" Padding="12,8">
+                    <Grid ColumnDefinitions="*,Auto,Auto,Auto" Margin="0">
+                        <TextBox Grid.Column="0" Text="{Binding SearchText}" Watermark="输入搜索内容..." MinWidth="400"
+                                 Classes="ModernTextBox"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="4" Margin="12,0,0,0">
+                            <Button Classes="PrimaryButton" Content="查找" Command="{Binding SearchCommand}" Padding="16,6"/>
                         </StackPanel>
-                        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="8" Margin="8,0,0,0">
-                            <TextBlock Text="{Binding SearchResultInfo}" VerticalAlignment="Center" Foreground="#666666"/>
-                            <Button Content="X" Command="{Binding CloseSearchCommand}" Padding="8,4"/>
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="4" Margin="8,0,0,0">
+                            <Button Classes="IconButton" Command="{Binding SearchPreviousCommand}" ToolTip.Tip="上一个">
+                                <PathIcon Data="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" Width="14" Height="14" Foreground="#64748B"/>
+                            </Button>
+                            <Button Classes="IconButton" Command="{Binding SearchNextCommand}" ToolTip.Tip="下一个">
+                                <PathIcon Data="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" Width="14" Height="14" Foreground="#64748B"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Grid.Column="3" Orientation="Horizontal" Spacing="8" Margin="8,0,0,0">
+                            <TextBlock Text="{Binding SearchResultInfo}" VerticalAlignment="Center" Foreground="#64748B" FontSize="12"/>
+                            <Button Classes="IconButton" Command="{Binding CloseSearchCommand}" ToolTip.Tip="关闭" Padding="6">
+                                <PathIcon Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" Width="14" Height="14" Foreground="#64748B"/>
+                            </Button>
                         </StackPanel>
                     </Grid>
                 </Border>
@@ -82,23 +151,17 @@
             </Grid>
         </Grid>
 
-        <Border Grid.Row="2" BorderBrush="#E2E8F0" BorderThickness="0,1,0,0" Padding="8,4">
-            <Grid ColumnDefinitions="Auto,*,Auto,*">
-                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="4" VerticalAlignment="Center">
-                    <Button Content="&lt;" Command="{Binding PreviousPageCommand}" Padding="8,4" MinWidth="32"/>
-                    <TextBox Text="{Binding CurrentPageInput}" Watermark="页码" MinWidth="60" VerticalContentAlignment="Center"/>
-                    <TextBlock Text="/" VerticalAlignment="Center" Margin="4,0"/>
-                    <TextBlock Text="{Binding TotalPages}" VerticalAlignment="Center"/>
-                    <Button Content="&gt;" Command="{Binding NextPageCommand}" Padding="8,4" MinWidth="32"/>
+        <Border Grid.Row="2" Background="#FFFFFF" BorderBrush="#E2E8F0" BorderThickness="0,1,0,0" Padding="12,6">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding StatusText}" FontSize="12" Foreground="#64748B" VerticalAlignment="Center"/>
                 </StackPanel>
-                <TextBlock Grid.Column="1" Text="{Binding StatusText}" VerticalAlignment="Center" Margin="16,0,0,0"/>
-                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="16" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding ZoomInfo}" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Grid.Column="3" Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right">
-                    <Button Content="-" Command="{Binding ZoomOutCommand}" Padding="8,4" MinWidth="32"/>
-                    <TextBlock Text="{Binding ZoomPercent}" VerticalAlignment="Center" MinWidth="50" TextAlignment="Center"/>
-                    <Button Content="+" Command="{Binding ZoomInCommand}" Padding="8,4" MinWidth="32"/>
+
+                <TextBlock Grid.Column="1" Text="{Binding CurrentDocument.FileName}" FontSize="12" Foreground="#94A3B8"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" Margin="16,0"/>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding ZoomInfo}" FontSize="12" Foreground="#64748B" VerticalAlignment="Center"/>
                 </StackPanel>
             </Grid>
         </Border>
