@@ -5,6 +5,7 @@ using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using SkiaSharp;
 using XiaoPengPDF.Services;
+using XiaoPengPDF.Core;
 using XiaoPengPDF.Core.Models;
 using XiaoPengPDF.Infrastructure.Logging;
 
@@ -34,7 +35,7 @@ public partial class PdfThumbnailViewModel : ViewModelBase
 
             using (var image = SKImage.FromBitmap(bitmap))
             {
-                using (var data = image.Encode(SKEncodedImageFormat.Png, 100))
+                using (var data = image.Encode(SKEncodedImageFormat.Png, AppConstants.PngEncodeQuality))
                 {
                     using var stream = new MemoryStream();
                     data.SaveTo(stream);
@@ -85,9 +86,9 @@ public partial class PdfThumbnailListViewModel : ViewModelBase
                 var thumbnailData = documentService.Renderer.RenderThumbnail(
                     documentService.CurrentDocument,
                     i,
-                    150,
-                    200);
-                thumbnail.SetThumbnailData(thumbnailData, 150, 200);
+                    AppConstants.ThumbnailWidth,
+                    AppConstants.ThumbnailHeight);
+                thumbnail.SetThumbnailData(thumbnailData, AppConstants.ThumbnailWidth, AppConstants.ThumbnailHeight);
             }
             catch (Exception ex)
             {

@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using XiaoPengPDF.Core;
 using XiaoPengPDF.Core.Interfaces;
 using XiaoPengPDF.Core.Models;
 
@@ -7,7 +8,7 @@ namespace XiaoPengPDF.Pdfium;
 
 public partial class PdfiumSearchService : IPdfSearchService
 {
-    private const string PdfiumDll = "pdfium";
+    private const string PdfiumDll = AppConstants.NativeLibraryName;
 
     static PdfiumSearchService()
     {

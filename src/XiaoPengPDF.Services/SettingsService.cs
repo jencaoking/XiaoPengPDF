@@ -1,4 +1,5 @@
 using System.Text.Json;
+using XiaoPengPDF.Core;
 using XiaoPengPDF.Infrastructure.Configuration;
 
 namespace XiaoPengPDF.Services;
@@ -13,12 +14,12 @@ public class SettingsService
     {
         var appDataPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "XiaoPengPDF");
+            AppConstants.AppName);
 
         if (!Directory.Exists(appDataPath))
             Directory.CreateDirectory(appDataPath);
 
-        _settingsFilePath = Path.Combine(appDataPath, "settings.json");
+        _settingsFilePath = Path.Combine(appDataPath, AppConstants.SettingsFileName);
         Settings = LoadSettings();
     }
 

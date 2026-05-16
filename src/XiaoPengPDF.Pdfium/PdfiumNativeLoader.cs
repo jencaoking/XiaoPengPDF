@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
+using XiaoPengPDF.Core;
 
 namespace XiaoPengPDF.Pdfium;
 
@@ -18,10 +19,10 @@ public static class PdfiumNativeLoader
             if (_isInitialized) return;
 
             string dllName = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
-                ? "pdfium.dll"
+                ? AppConstants.PdfiumDllWindows
                 : RuntimeInformation.IsOSPlatform(OSPlatform.OSX)
-                    ? "libpdfium.dylib"
-                    : "libpdfium.so";
+                    ? AppConstants.PdfiumDylibMacOS
+                    : AppConstants.PdfiumSoLinux;
 
             string[] searchPaths = GetSearchPaths();
 
@@ -48,7 +49,7 @@ public static class PdfiumNativeLoader
 
     private static IntPtr DllImportResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
     {
-        if (libraryName == "pdfium" || libraryName == "pdfium.dll" || libraryName == "libpdfium.so" || libraryName == "libpdfium.dylib")
+        if (libraryName == AppConstants.NativeLibraryName || libraryName == AppConstants.PdfiumDllWindows || libraryName == AppConstants.PdfiumSoLinux || libraryName == AppConstants.PdfiumDylibMacOS)
         {
             return _pdfiumHandle;
         }
@@ -63,20 +64,20 @@ public static class PdfiumNativeLoader
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
             string arch = RuntimeInformation.ProcessArchitecture == Architecture.X64 ? "x64" : "x86";
-            paths.Add(Path.Combine(basePath, arch, "pdfium.dll"));
-            paths.Add(Path.Combine(basePath, "runtimes", arch, "native", "pdfium.dll"));
-            paths.Add(Path.Combine(basePath, "runtimes", arch, "pdfium.dll"));
-            paths.Add(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "XiaoPengPDF", "runtimes", arch, "pdfium.dll"));
+            paths.Add(Path.Combine(basePath, arch, AppConstants.PdfiumDllWindows));
+            paths.Add(Path.Combine(basePath, AppConstants.RuntimesDirectoryName, arch, "native", AppConstants.PdfiumDllWindows));
+            paths.Add(Path.Combine(basePath, AppConstants.RuntimesDirectoryName, arch, AppConstants.PdfiumDllWindows));
+            paths.Add(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), AppConstants.AppName, AppConstants.RuntimesDirectoryName, arch, AppConstants.PdfiumDllWindows));
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
-            paths.Add(Path.Combine(basePath, "runtimes", "linux-x64", "native", "libpdfium.so"));
-            paths.Add(Path.Combine(basePath, "runtimes", "linux-x64", "libpdfium.so"));
+            paths.Add(Path.Combine(basePath, AppConstants.RuntimesDirectoryName, "linux-x64", "native", AppConstants.PdfiumSoLinux));
+            paths.Add(Path.Combine(basePath, AppConstants.RuntimesDirectoryName, "linux-x64", AppConstants.PdfiumSoLinux));
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
-            paths.Add(Path.Combine(basePath, "runtimes", "osx-x64", "native", "libpdfium.dylib"));
-            paths.Add(Path.Combine(basePath, "runtimes", "osx-x64", "libpdfium.dylib"));
+            paths.Add(Path.Combine(basePath, AppConstants.RuntimesDirectoryName, "osx-x64", "native", AppConstants.PdfiumDylibMacOS));
+            paths.Add(Path.Combine(basePath, AppConstants.RuntimesDirectoryName, "osx-x64", AppConstants.PdfiumDylibMacOS));
         }
 
         return [.. paths];

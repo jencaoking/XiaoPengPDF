@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using XiaoPengPDF.ViewModels;
+using XiaoPengPDF.Core;
 using XiaoPengPDF.Infrastructure.Logging;
 using XiaoPengPDF.Infrastructure.Configuration;
 using XiaoPengPDF.Services;
@@ -122,7 +123,7 @@ public partial class MainWindow : Window
                 if (fileList.Count > 0)
                 {
                     var path = fileList[0].Path.LocalPath;
-                    if (path.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+                    if (path.EndsWith(AppConstants.PdfFileExtension, StringComparison.OrdinalIgnoreCase))
                     {
                         LoggingService.Info($"Opening dropped file: {path}");
                         vm.OpenFile(path);

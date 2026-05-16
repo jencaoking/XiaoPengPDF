@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using XiaoPengPDF.Core;
 using XiaoPengPDF.Core.Interfaces;
 using XiaoPengPDF.Core.Models;
 
@@ -8,7 +9,7 @@ namespace XiaoPengPDF.Pdfium;
 
 public partial class PdfiumOutlineProvider : IPdfOutlineProvider
 {
-    private const string PdfiumDll = "pdfium";
+    private const string PdfiumDll = AppConstants.NativeLibraryName;
 
     static PdfiumOutlineProvider()
     {

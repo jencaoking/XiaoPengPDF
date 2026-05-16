@@ -7,17 +7,17 @@
              x:Class="XiaoPengPDF.Views.BookmarkPanelView"
              x:DataType="vm:BookmarkPanelViewModel">
 
-    <Grid Background="#F8FAFC">
+    <Grid Background="{StaticResource SidebarBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Background="#FFFFFF" BorderBrush="#E2E8F0" BorderThickness="0,0,0,1" Padding="12,8">
+        <Border Grid.Row="0" Background="{StaticResource ToolbarBackgroundBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="12,8">
             <Grid ColumnDefinitions="*,Auto">
-                <TextBlock Grid.Column="0" Text="书签" FontWeight="SemiBold" FontSize="13" VerticalAlignment="Center" Foreground="#1E293B"/>
+                <TextBlock Grid.Column="0" Text="书签" FontWeight="SemiBold" FontSize="13" VerticalAlignment="Center" Foreground="{StaticResource TextBrush}"/>
                 <Button Grid.Column="1" Classes="IconButton" Command="{Binding AddBookmarkCommand}" ToolTip.Tip="添加书签" Padding="6">
-                    <PathIcon Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Width="16" Height="16" Foreground="#64748B"/>
+                    <PathIcon Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Width="16" Height="16" Foreground="{StaticResource IconBrush}"/>
                 </Button>
             </Grid>
         </Border>
@@ -25,7 +25,7 @@
         <TextBlock Grid.Row="1" Text="暂无书签"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   Foreground="#94A3B8"
+                   Foreground="{StaticResource TextTertiaryBrush}"
                    FontSize="13"
                    IsVisible="{Binding !HasBookmarks}"/>
 
@@ -33,19 +33,19 @@
             <ItemsControl ItemsSource="{Binding Bookmarks}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate x:DataType="vm:BookmarkItemViewModel">
-                        <Border Margin="0,2" Padding="10" Background="#FFFFFF" CornerRadius="6"
-                                BorderBrush="#E2E8F0" BorderThickness="1">
+                        <Border Margin="0,2" Padding="10" Background="{StaticResource SurfaceBrush}" CornerRadius="6"
+                                BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
                             <Grid ColumnDefinitions="*,Auto">
                                 <StackPanel Grid.Column="0" Spacing="2">
-                                    <TextBlock Text="{Binding Title}" FontWeight="Medium" FontSize="13" Foreground="#1E293B"/>
-                                    <TextBlock Text="{Binding PageInfo}" Foreground="#94A3B8" FontSize="11"/>
+                                    <TextBlock Text="{Binding Title}" FontWeight="Medium" FontSize="13" Foreground="{StaticResource TextBrush}"/>
+                                    <TextBlock Text="{Binding PageInfo}" Foreground="{StaticResource TextTertiaryBrush}" FontSize="11"/>
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="2">
                                     <Button Classes="IconButton" Command="{Binding NavigateCommand}" ToolTip.Tip="前往" Padding="6">
-                                        <PathIcon Data="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" Width="14" Height="14" Foreground="#64748B"/>
+                                        <PathIcon Data="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" Width="14" Height="14" Foreground="{StaticResource IconBrush}"/>
                                     </Button>
                                     <Button Classes="IconButton" Command="{Binding RemoveCommand}" ToolTip.Tip="删除" Padding="6">
-                                        <PathIcon Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" Width="14" Height="14" Foreground="#64748B"/>
+                                        <PathIcon Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" Width="14" Height="14" Foreground="{StaticResource IconBrush}"/>
                                     </Button>
                                 </StackPanel>
                             </Grid>

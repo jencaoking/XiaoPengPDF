@@ -1,11 +1,13 @@
+using XiaoPengPDF.Core;
+
 namespace XiaoPengPDF.Infrastructure.Logging;
 
 public class LoggingService
 {
     private static readonly string LogDirectory = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-        "XiaoPengPDF",
-        "logs");
+        AppConstants.AppName,
+        AppConstants.LogsDirectoryName);
 
     public static void Initialize()
     {
@@ -15,7 +17,7 @@ public class LoggingService
         }
     }
 
-    public static string GetLogFilePath() => Path.Combine(LogDirectory, $"app_{DateTime.Now:yyyyMMdd}.log");
+    public static string GetLogFilePath() => Path.Combine(LogDirectory, string.Format(AppConstants.LogFileNameFormat, DateTime.Now));
 
     public static void Log(string level, string message, Exception? exception = null)
     {

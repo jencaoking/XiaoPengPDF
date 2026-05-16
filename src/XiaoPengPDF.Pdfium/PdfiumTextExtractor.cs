@@ -1,13 +1,14 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using XiaoPengPDF.Core;
 using XiaoPengPDF.Core.Interfaces;
 
 namespace XiaoPengPDF.Pdfium;
 
 public partial class PdfiumTextExtractor : IPdfTextExtractor
 {
-    private const string PdfiumDll = "pdfium";
+    private const string PdfiumDll = AppConstants.NativeLibraryName;
 
     static PdfiumTextExtractor()
     {

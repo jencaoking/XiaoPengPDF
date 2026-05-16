@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using XiaoPengPDF.Core;
 using XiaoPengPDF.Core.Interfaces;
 using XiaoPengPDF.Core.Models;
 
@@ -49,7 +50,7 @@ public class PdfiumDocument : IPdfDocument, IDisposable
         PageCount = FPDF_GetPageCount(_document);
     }
 
-    [DllImport("pdfium", EntryPoint = "FPDF_GetLastError")]
+    [DllImport(PdfiumDll, EntryPoint = "FPDF_GetLastError")]
     private static extern int FPDF_GetLastError();
 
     public PdfPage GetPage(int pageNumber)
@@ -88,7 +89,7 @@ public class PdfiumDocument : IPdfDocument, IDisposable
         GC.SuppressFinalize(this);
     }
 
-    private const string PdfiumDll = "pdfium";
+    private const string PdfiumDll = AppConstants.NativeLibraryName;
 
     [DllImport(PdfiumDll, EntryPoint = "FPDF_LoadDocument", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
     private static extern IntPtr FPDF_LoadDocument([MarshalAs(UnmanagedType.LPWStr)] string filePath, [MarshalAs(UnmanagedType.LPWStr)] string password);

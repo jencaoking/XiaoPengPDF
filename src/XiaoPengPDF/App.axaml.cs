@@ -4,6 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using XiaoPengPDF.Views;
 using XiaoPengPDF.ViewModels;
+using XiaoPengPDF.Core;
 using XiaoPengPDF.Infrastructure.Logging;
 using XiaoPengPDF.Infrastructure.Configuration;
 using XiaoPengPDF.Pdfium;
@@ -22,7 +23,7 @@ public partial class App : Application
     public override void OnFrameworkInitializationCompleted()
     {
         LoggingService.Initialize();
-        LoggingService.Info("XiaoPengPDF starting...");
+        LoggingService.Info($"{AppConstants.AppName} starting...");
 
         try
         {
@@ -30,7 +31,7 @@ public partial class App : Application
             LoggingService.Info("PDFium native library initialized");
 
             var settings = AppSettings.Load();
-            ApplyTheme(settings.Theme == "Dark");
+            ApplyTheme(settings.Theme == AppConstants.DarkTheme);
 
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
@@ -68,7 +69,7 @@ public partial class App : Application
     {
         ApplyTheme(!IsDarkMode);
         var settings = AppSettings.Load();
-        settings.Theme = IsDarkMode ? "Dark" : "Light";
+        settings.Theme = IsDarkMode ? AppConstants.DarkTheme : AppConstants.DefaultTheme;
         settings.Save();
     }
 }

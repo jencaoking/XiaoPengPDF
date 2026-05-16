@@ -9,6 +9,7 @@ using CommunityToolkit.Mvvm.Input;
 using XiaoPengPDF.Services;
 using XiaoPengPDF.Infrastructure.Configuration;
 using XiaoPengPDF.Infrastructure.Logging;
+using XiaoPengPDF.Core;
 using XiaoPengPDF.Core.Models;
 using XiaoPengPDF.Core.Enums;
 
@@ -25,7 +26,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private int _currentSearchIndex = -1;
 
     [ObservableProperty]
-    private string _title = "小鹏PDF阅读器";
+    private string _title = AppConstants.AppDisplayName;
 
     [ObservableProperty]
     private string _statusText = "就绪";
@@ -124,7 +125,7 @@ public partial class MainWindowViewModel : ViewModelBase
             AllowMultiple = false,
             FileTypeFilter = new[]
             {
-                new FilePickerFileType("PDF文件") { Patterns = new[] { "*.pdf" } }
+                new FilePickerFileType(AppConstants.PdfFileTypeName) { Patterns = new[] { AppConstants.PdfFileFilterPattern } }
             }
         });
 
@@ -151,7 +152,7 @@ public partial class MainWindowViewModel : ViewModelBase
             TotalPages = CurrentDocument.PageCount;
             CurrentPage = 1;
             CurrentPageInput = "1";
-            Title = $"小鹏PDF阅读器 - {CurrentDocument.FileName}";
+            Title = $"{AppConstants.AppDisplayName} - {CurrentDocument.FileName}";
 
             PdfViewerViewModel?.LoadDocument(_documentService);
             ThumbnailListViewModel?.LoadDocument(_documentService);
@@ -235,7 +236,7 @@ public partial class MainWindowViewModel : ViewModelBase
         TotalPages = 0;
         CurrentPage = 1;
         CurrentPageInput = "1";
-        Title = "小鹏PDF阅读器";
+        Title = AppConstants.AppDisplayName;
         StatusText = "就绪";
         _searchResults.Clear();
         _currentSearchIndex = -1;
@@ -250,9 +251,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void ZoomIn()
     {
-        if (CurrentZoom < 5.0)
+        if (CurrentZoom < AppConstants.MaxZoom)
         {
-            CurrentZoom += 0.1;
+            CurrentZoom += AppConstants.ZoomStep;
             UpdateZoom();
         }
     }
@@ -260,9 +261,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void ZoomOut()
     {
-        if (CurrentZoom > 0.1)
+        if (CurrentZoom > AppConstants.MinZoom)
         {
-            CurrentZoom -= 0.1;
+            CurrentZoom -= AppConstants.ZoomStep;
             UpdateZoom();
         }
     }
@@ -416,7 +417,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void About()
     {
-        StatusText = "小鹏PDF阅读器 v1.0.0";
+        StatusText = $"{AppConstants.AppDisplayName} v{AppConstants.AppVersion}";
     }
 
     [RelayCommand]

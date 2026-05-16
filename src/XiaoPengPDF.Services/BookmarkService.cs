@@ -1,4 +1,5 @@
 using System.Text.Json;
+using XiaoPengPDF.Core;
 using XiaoPengPDF.Core.Interfaces;
 using XiaoPengPDF.Core.Models;
 using XiaoPengPDF.Infrastructure.Logging;
@@ -13,12 +14,12 @@ public class BookmarkService : IBookmarkService
     {
         var appDataPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "XiaoPengPDF");
+            AppConstants.AppName);
 
         if (!Directory.Exists(appDataPath))
             Directory.CreateDirectory(appDataPath);
 
-        _bookmarksFilePath = Path.Combine(appDataPath, "bookmarks.json");
+        _bookmarksFilePath = Path.Combine(appDataPath, AppConstants.BookmarksFileName);
     }
 
     public async Task<List<PdfBookmark>> GetBookmarksAsync(string filePath)

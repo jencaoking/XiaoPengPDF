@@ -1,23 +1,24 @@
 using System.Text.Json;
+using XiaoPengPDF.Core;
 
 namespace XiaoPengPDF.Infrastructure.Configuration;
 
 public class AppSettings
 {
-    public string Theme { get; set; } = "Light";
-    public string Language { get; set; } = "en-US";
-    public double DefaultZoom { get; set; } = 1.0;
-    public string DefaultFitMode { get; set; } = "FitWidth";
+    public string Theme { get; set; } = AppConstants.DefaultTheme;
+    public string Language { get; set; } = AppConstants.DefaultLanguage;
+    public double DefaultZoom { get; set; } = AppConstants.DefaultZoom;
+    public string DefaultFitMode { get; set; } = AppConstants.DefaultFitMode;
     public bool ShowScrollBar { get; set; } = true;
     public bool RememberLastPosition { get; set; } = true;
     public List<string> RecentFiles { get; set; } = new();
-    public int MaxRecentFiles { get; set; } = 10;
+    public int MaxRecentFiles { get; set; } = AppConstants.DefaultMaxRecentFiles;
 
     private static readonly string SettingsDirectory = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-        "XiaoPengPDF");
+        AppConstants.AppName);
 
-    private static readonly string SettingsFilePath = Path.Combine(SettingsDirectory, "settings.json");
+    private static readonly string SettingsFilePath = Path.Combine(SettingsDirectory, AppConstants.SettingsFileName);
 
     public static AppSettings Load()
     {

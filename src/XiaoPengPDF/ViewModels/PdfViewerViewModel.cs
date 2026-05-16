@@ -6,6 +6,7 @@ using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SkiaSharp;
+using XiaoPengPDF.Core;
 using XiaoPengPDF.Core.Enums;
 using XiaoPengPDF.Services;
 using XiaoPengPDF.Core.Interfaces;
